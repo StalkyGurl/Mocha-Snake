@@ -18,9 +18,11 @@ class Snake():
         snake_box = p.image.load("images/snake_box.png")
         snake_head = p.image.load("images/snake_head.png")
         snake_tail = p.image.load("images/snake_tail.png")
+        snake_ball = p.image.load("images/snake_ball.png")
         snake_box = p.transform.scale(snake_box,(SQ_SIZE, SQ_SIZE))
         snake_head = p.transform.scale(snake_head,(SQ_SIZE, SQ_SIZE))
         snake_tail = p.transform.scale(snake_tail,(SQ_SIZE, SQ_SIZE))
+        snake_ball = p.transform.scale(snake_ball,(SQ_SIZE, SQ_SIZE))
         for i in range(self.length):
             if i == 0 and self.length > 1:
                 if self.direction == 'down':
@@ -32,6 +34,16 @@ class Snake():
                 elif self.direction == 'left':
                     snake_head = p.transform.rotate(snake_head, 270)
                 screen.blit(snake_head, self.coordinates[i])
+            elif i == 0 and self.length == 1:
+                if self.direction == 'down':
+                    snake_ball = p.transform.rotate(snake_ball, 0)
+                elif self.direction == 'right':
+                    snake_ball = p.transform.rotate(snake_ball, 90)
+                elif self.direction == 'up':
+                    snake_ball = p.transform.rotate(snake_ball, 180)
+                elif self.direction == 'left':
+                    snake_ball = p.transform.rotate(snake_ball, 270)
+                screen.blit(snake_ball, self.coordinates[i])
             elif self.length > 1 and i == self.length - 1:
                 lx, ly = self.coordinates[i-1]
                 x, y = self.coordinates[i]
