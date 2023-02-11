@@ -3,6 +3,7 @@ This is the main driver file.
 '''
 
 import pygame as p
+from os import path
 from time import sleep
 from snake import *
 from coffee import *
@@ -18,6 +19,10 @@ p.display.set_caption('Mocha Snake')
 clock = p.time.Clock()
 bg = p.image.load("images/game_bg.png")
 bg = p.transform.scale(bg, (WIDTH, HEIGHT))
+p.mixer.init()
+p.mixer.music.load("assets/bg_music.mp3")
+p.mixer.music.play(-1, 0.0)
+p.mixer.music.set_volume(0.05)
 BEST_SCORE = 0
 
 
@@ -69,6 +74,7 @@ def printEndGameText(score):
 
 def main():
     p.init()
+    pick = p.mixer.Sound(path.join('assets', 'pick.wav'))
     snake = Snake()
     running = True
     coffee = spawnCoffee(snake.coordinates)
@@ -95,6 +101,7 @@ def main():
                 snake.length += 1
                 del coffee
                 coffee = spawnCoffee(snake.coordinates)
+                pick.play()
 
             printScore(snake.length)
             coffee.drawCoffee(screen)
