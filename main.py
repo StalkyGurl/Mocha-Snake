@@ -15,6 +15,8 @@ SCORE_SPACE = 50
 DIMENSION = 20
 SQ_SIZE = WIDTH // DIMENSION
 screen = p.display.set_mode((WIDTH, HEIGHT + SCORE_SPACE))
+icon = p.image.load("images/icon.png")
+p.display.set_icon(icon)
 p.display.set_caption('Mocha Snake')
 clock = p.time.Clock()
 bg = p.image.load("images/game_bg.png")
@@ -33,11 +35,11 @@ def get_font(size):
 def printScore(score):
     p.font.init()
     font = get_font(55)
-    text = font.render(f'Score: ', True, '#1AB1E5')
+    text = font.render(f'Score: ', True, '#7295CD')
     screen.blit(text, (10,690))
     font2 = p.font.SysFont('Verdana', 46)
     font2.set_bold(True)
-    text2 = font2.render(f'{score}', True, '#1AB1E5')
+    text2 = font2.render(f'{score}', True, '#7295CD')
     screen.blit(text2, (225, 695))
 
 
