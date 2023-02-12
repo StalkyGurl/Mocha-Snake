@@ -8,7 +8,7 @@ from time import sleep
 from snake import *
 from coffee import *
 
-SNAKE_SPEED = 5
+SNAKE_SPEED = 9
 FPS = 60
 WIDTH = HEIGHT = 700
 SCORE_SPACE = 50
